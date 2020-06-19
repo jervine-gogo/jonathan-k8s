@@ -21,6 +21,28 @@
       register: penv
     - debug: var=penv.stdout_lines
 
+    - name: Test Local Commands
+      shell:
+        cmd: echo /etc/redhat-release
+      register: release
+    - debug: var=release.stdout_lines
+
+    - name: Test whoami
+      shell:
+        cmd: whoami
+      register: me
+    - debug: var=me.stdout_lines
+
+    - name: kubectl
+      command: type -p kubectl
+      register: where_kube
+    - debug: var=where_kube.stdout_lines
+
+    - name: kubectl2
+      command: kubectl version
+      register: kube_ver
+    - debug: var=kube_ver.stdout_lines
+
     - name: cluster info
       shell:
         cmd: kubectl cluster-info

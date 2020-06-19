@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: ansible-runner
+  namespace: default   
+spec:
+  serviceAccountName: awx-sa
+  containers:
+    - name: ansible-runner
+      image: vincentngai86/ansibleawx:runner-04
+      tty: true
+      stdin: true
+      imagePullPolicy: Always
+      args:
+        - sleep
+        - infinity
+  nodeSelector:
+    appenv: cicd
