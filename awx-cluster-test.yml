@@ -49,7 +49,7 @@
     - debug: var=where_kube.stdout_lines
 
     - name: kubectl2
-      command: sh -c 'kubectl version'
+      raw: kubectl version
       register: kube_ver
     - debug: var=kube_ver.stdout_lines
 
