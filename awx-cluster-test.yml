@@ -10,7 +10,7 @@
 #    #- debug: "{{ target_node }}"
 
 
-- hosts: localhost
+- hosts: all
   vars_files:
   - global_vars/main.yml
 
