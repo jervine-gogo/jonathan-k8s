@@ -23,7 +23,7 @@
 
     - name: Test Local Commands
       shell:
-        cmd: echo /etc/redhat-release
+        cmd: cat /etc/redhat-release
       register: release
     - debug: var=release.stdout_lines
 
@@ -32,6 +32,16 @@
         cmd: whoami
       register: me
     - debug: var=me.stdout_lines
+
+    - name: get hostname
+      command: cat /etc/hostname
+      register: myhostname
+    - debug: var=myhostname.stdout_lines
+
+    - name: get IP address
+      command: ip a
+      register: myIP
+    - debug: var=myIP.stdout_lines
 
     - name: kubectl
       command: type -p kubectl
