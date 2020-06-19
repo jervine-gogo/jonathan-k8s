@@ -22,7 +22,8 @@
     - debug: var=penv.stdout_lines
 
     - name: cluster info
-      command: kubectl cluster-info
+      shell:
+        cmd: kubectl cluster-info
       register: cluster
     - debug: var=cluster.stdout_lines
 
