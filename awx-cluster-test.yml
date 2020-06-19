@@ -49,13 +49,13 @@
     - debug: var=where_kube.stdout_lines
 
     - name: kubectl2
-      command: kubectl version
+      command: sh -c 'kubectl version'
       register: kube_ver
     - debug: var=kube_ver.stdout_lines
 
     - name: cluster info
       shell:
-        cmd: kubectl cluster-info
+        cmd: sh -c 'kubectl cluster-info'
       register: cluster
     - debug: var=cluster.stdout_lines
 
