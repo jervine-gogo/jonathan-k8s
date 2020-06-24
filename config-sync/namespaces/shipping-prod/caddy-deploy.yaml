@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: caddy
+  name: caddy
+spec:
+  selector:
+    matchLabels:
+      app: caddy
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: caddy
+    spec:
+      containers:
+      - image: caddy
+        imagePullPolicy: Always
+        name: caddy
+        ports:
+        - containerPort: 80
+          protocol: TCP
+          name: caddy-www
+        - containerPort: 443
+          protocol: TCP
+          name: caddy-ssl
+        - containerPort: 2019
+          protocol: TCP
+          name: caddy
