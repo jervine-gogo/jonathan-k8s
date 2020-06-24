@@ -1,0 +1,14 @@
+# config-management.yaml
+
+apiVersion: configmanagement.gke.io/v1
+kind: ConfigManagement
+metadata:
+  name: config-management
+spec:
+  # clusterName is required and must be unique among all managed clusters
+  clusterName: ggv-k8s-sandbox
+  git:
+    syncRepo: git@github.com:jervine-gogo/jonathan-k8s.git
+    syncBranch: master
+    secretType: ssh
+    policyDir: "config-sync"
